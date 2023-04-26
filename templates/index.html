@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Question Answering Demo</title>
+        <meta charset="utf-8" />
+<!--        <style>-->
+<!--        body {-->
+<!--            background-color: #F8F8FF;-->
+<!--            background-image: url('https://cdn.pixabay.com/photo/2021/02/06/22/29/pattern-5986205_1280.jpg');-->
+<!--            background-repeat: repeat;-->
+<!--            background-size: cover;-->
+<!--            color: #333;-->
+<!--            font-family: Arial, sans-serif;-->
+<!--            font-size: 1rem;-->
+<!--        }-->
+<!--        .container {-->
+<!--            background-color: #FFF;-->
+<!--            border-radius: 5px;-->
+<!--            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);-->
+<!--            margin-top: 50px;-->
+<!--            padding: 20px;-->
+<!--        }-->
+<!--        h1 {-->
+<!--            font-size: 2rem;-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
+<!--        p {-->
+<!--            font-size: 1.2rem;-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
+<!--    </style>-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Answer Aware Question Generation">
+    <meta name="keywords" content="QA Pair, NLP, AAQG, Automatic QG">
+    <meta name="author" content="Aritra Kumar Lahiri">
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <link rel="icon" type="image" href="img/icon.png" />
+    <!-- CSS-->
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='css/main.css') }}" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h+aGmNtu1nH7r95N7md/HoOgxhXrL2V7FxRx" crossorigin="anonymous">-->
+</head>
+
+<div class="container">
+    <body>
+        <h1 class="my-5">Question Answering Demo</h1>
+        <form action="/answer" method="POST">
+            <div class="form-group">
+                <label for="passage">Passage:</label>
+                <textarea class="form-control" id="passage" name="passage" rows="10" cols="50"></textarea>
+            </div>
+<!--            <div class="form-group">-->
+<!--                <label for="question">Question:</label>-->
+<!--                <input type="text" class="form-control" id="question" name="question">-->
+<!--            </div>-->
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+
+  <!--  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h+aGmNtu1nH7r95N7md/HoOgxhXrL2V7FxRx" crossorigin="anonymous"></script>-->
+</body>
+</div>
+<!--<ul class="footerLogos" style="display: flex; align-items: center; justify-content: center;">-->
+<!--  <li><img src="logo url"></li>-->
+<!--  <li><img src="logo url"></li>-->
+<!--  <li><img src="logo url"></li>-->
+<!--</ul>-->
+    <ul class="footerLogos" style="display: flex; align-items: center; justify-content: center;">
+                <div class="social">
+                    <a href="mailto:lahiri.aritra@gmail.com" target="_blank">
+                        <i class="fa fa-envelope"></i>
+                    </a>
+                    <a href="https://github.com/aritra23" target="_blank">
+                        <i class="fa fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/aritrakumarlahiri/" target="_blank">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                    <!-- <a href="https://twitter.com/@aritralovesuall" target="_blank">
+                        <i class="fa fa-twitter"></i>
+                    </a> -->
+                </div>
+
+<!--                <p class="footer">Copyright &copy; Aritra Kumar Lahiri</p>-->
+    </ul>
+</html>
