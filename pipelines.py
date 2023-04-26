@@ -5,6 +5,8 @@ from typing import Optional, Dict, Union
 from nltk import sent_tokenize
 
 import torch
+import nltk
+nltk.download('punkt')
 from transformers import(
     AutoModelForSeq2SeqLM, 
     AutoTokenizer,
