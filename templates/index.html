@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:color="http://www.w3.org/1999/xhtml" xmlns:font-size="http://www.w3.org/1999/xhtml">
 <head>
     <title>Question Answering Demo</title>
         <meta charset="utf-8" />
@@ -35,7 +35,7 @@
     <meta name="keywords" content="QA Pair, NLP, AAQG, Automatic QG">
     <meta name="author" content="Aritra Kumar Lahiri">
     <!--<script src="{{ url_for('static', filename='js/main.js') }}"></script>-->
-    <link rel="icon" type="image" href="img/icon.png" />
+<!--    <link rel="icon" type="image" href="img/icon.png" />-->
     <!-- CSS-->
     <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='css/main.css') }}" />
     <!-- Bootstrap -->
@@ -53,7 +53,7 @@
 
 <div class="container">
     <body>
-        <h1 class="my-5">Question Answering Demo</h1>
+        <h1 class="my-5" style=”text-align: center; color: red; font-size:large”>Auto Answer Aware QA</h1>
         <form action="/answer" method="POST">
             <div class="form-group">
                 <label for="passage">Passage:</label>
@@ -63,7 +63,7 @@
 <!--                <label for="question">Question:</label>-->
 <!--                <input type="text" class="form-control" id="question" name="question">-->
 <!--            </div>-->
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button><br><br>
         </form>
 
 
@@ -77,22 +77,22 @@
 <!--  <li><img src="logo url"></li>-->
 <!--  <li><img src="logo url"></li>-->
 <!--</ul>-->
-    <ul class="footerLogos" style="display: flex; align-items: center; justify-content: center;">
-                <div class="social">
-                    <a href="mailto:lahiri.aritra@gmail.com" target="_blank">
-                        <i class="fa fa-envelope"></i>
-                    </a>
-                    <a href="https://github.com/aritra23" target="_blank">
-                        <i class="fa fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/aritrakumarlahiri/" target="_blank">
-                        <i class="fa fa-linkedin"></i>
-                    </a>
-                    <!-- <a href="https://twitter.com/@aritralovesuall" target="_blank">
-                        <i class="fa fa-twitter"></i>
-                    </a> -->
-                </div>
+<!--    <ul class="footerLogos" style="display: flex; align-items: center; justify-content: center;">-->
+<!--                <div class="social">-->
+<!--                    <a href="mailto:lahiri.aritra@gmail.com" target="_blank">-->
+<!--                        <i class="fa fa-envelope"></i>-->
+<!--                    </a>-->
+<!--                    <a href="https://github.com/aritra23" target="_blank">-->
+<!--                        <i class="fa fa-github"></i>-->
+<!--                    </a>-->
+<!--                    <a href="https://www.linkedin.com/in/aritrakumarlahiri/" target="_blank">-->
+<!--                        <i class="fa fa-linkedin"></i>-->
+<!--                    </a>-->
+<!--                    &lt;!&ndash; <a href="https://twitter.com/@aritralovesuall" target="_blank">-->
+<!--                        <i class="fa fa-twitter"></i>-->
+<!--                    </a> &ndash;&gt;-->
+<!--                </div>-->
 
-<!--                <p class="footer">Copyright &copy; Aritra Kumar Lahiri</p>-->
-    </ul>
+<!--&lt;!&ndash;                <p class="footer">Copyright &copy; Aritra Kumar Lahiri</p>&ndash;&gt;-->
+<!--    </ul>-->
 </html>

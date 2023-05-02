@@ -1,11 +1,11 @@
 /* Global */
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
 html, body{
-    font-size: 1.3rem;
     background-color: #F8F8FF;
-    background-image: url('https://cdn.pixabay.com/photo/2021/02/06/22/29/pattern-5986205_1280.jpg');
-    background-repeat: repeat;
+    background-image: url('../images/Iron-Throne.png');
+    background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     color: #333;
 }
 hr{
@@ -15,7 +15,26 @@ hr{
      border-radius: 5px;
      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
      margin-top: 50px;
+     background-image: url('../images/Dragon.png');
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position: center;
+     font-family: "Times New Roman", Times, serif;
+     font-size:2em;
+     font-weight: bold;
+     border: 2px solid black;
+     padding: 20px;
+     color: #F8F8FF;
+     text-align:center
      /*padding: 20px;*/
+}
+.form-group{
+     color: #F8F8FF;
+     text-align:left;
+     font-weight: bold;
+}
+.h1 {
+  font-size: 2.5em; /* 40px/16=2.5em */
 }
 
 
@@ -37,8 +56,10 @@ hr{
 }
 /* Buttons */
 .btn{
+    text-align:left;
 }
 .btn-primary{
+    text-align:left;
 }
 /* Jumbotron */
 .jumbotron{
