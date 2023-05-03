@@ -9,6 +9,7 @@ from email.mime.multipart import MIMEMultipart
 # from email import encoders
 from flask import Flask, render_template, request, send_file, url_for, redirect
 from pipelines import pipeline # Replace with your own function for generating answers
+from question_generation import clean_text
 
 app = Flask(__name__)
 
@@ -19,12 +20,18 @@ def index():
 @app.route("/answer", methods=["POST"])
 def answer():
     passage = request.form["passage"]
+    cleaned_passage = clean_text(passage)
     # question = request.form["question"]
     nlp = pipeline("question-generation", model="valhalla/t5-small-qg-prepend", qg_format="prepend")
-    answer = nlp(passage)
+    # nlp = pipeline("question-generation")
+    # nlp = pipeline("multitask-qa-qg", model="valhalla/distilt5-qa-qg-hl-6-4")
+    answer = nlp(cleaned_passage)
+    for x in answer:
+        if "<pad> " in x['answer']:
+            x['answer'] = x['answer'].replace("<pad> ", "")
     with open('answer.json', 'w') as outfile:
         json.dump(answer, outfile)
-    # return render_template('answer.html', passage=passage, question=question, answer=answer)
+    # return render_template('answer.html', passage=cleaned_passage, question=question, answer=answer)
     return render_template("answer.html", passage=passage, answer=answer)
 
 @app.route('/download')
@@ -36,13 +43,13 @@ def download():
 def email_answer():
     email = request.form['email']
     passage = request.form['passage']
-    question = request.form['question']
+    # question = request.form['question']
     answer = request.form['answer']
 
     # Create a JSON file for the answer data
     answer_data = {
         "passage": passage,
-        "question": question,
+        # "question": question,
         "answer": answer
     }
     with open('answer.json', 'w') as f:

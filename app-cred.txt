@@ -1,6 +1,0 @@
-export API_TOKEN=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
-uvicorn app:app --reload --port 8088
-uvicorn app:app --host 0.0.0.0 --port 8088
-
-
-Google app password : vvhktmjpoxmmrdsy
