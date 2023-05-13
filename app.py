@@ -69,26 +69,32 @@ def answer():
     question_list = []
     # Use the selected model
     if selected_task == "single-qa":
-
+        res = []
         for x in answer:
             answer_task1 = x
             answer = answer_task1
+            res = answer
             break
 
-    if selected_task == "e2e-qg":
+    if selected_task == "multi-qg":
         nlp = pipeline("e2e-qg", use_auth_token='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')
         answer = nlp(passage)
+        res = []
+        [res.append(x) for x in answer if x not in res]
         # for x in answer:
         #     question_list.append(x['question'])
         #     answer = question_list
     if selected_task == "e2e-qa":
-        answer = answer
+        answer = [{'question': key, 'answer': max(item['answer'] for item in values)}
+                     for key, values in groupby(answer, lambda dct: dct['question'])]
+        res = []
+        [res.append(x) for x in answer if x not in res]
 
     with open('answer.json', 'w') as outfile:
         json.dump(answer, outfile)
         # json.dumps(qa_pairs, indent=4)
     # return render_template('answer.html', passage=cleaned_passage, question=question, answer=answer)
-    return render_template("answer.html", answer=answer)
+    return render_template("answer.html", answer=res)
 
 
 @app.route('/download')
