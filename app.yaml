@@ -1,3 +1,1 @@
-runtime: python37
-service: auto-answer-aware-qa-app
 instance_class: F4_HIGHMEM
