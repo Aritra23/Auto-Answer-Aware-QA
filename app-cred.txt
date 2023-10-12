@@ -1,6 +1,6 @@
-export API_TOKEN=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
+export API_TOKEN=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 uvicorn app:app --reload --port 8088
 uvicorn app:app --host 0.0.0.0 --port 8088
 
 
-Google app password : vvhktmjpoxmmrdsy
+Google app password : XXXXXXXXXXX
