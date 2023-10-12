@@ -192,7 +192,7 @@ class MultiTaskQAQGPipeline(QGPipeline):
         outs = self.model.generate(
             input_ids=inputs['input_ids'].to(self.device), 
             attention_mask=inputs['attention_mask'].to(self.device), 
-            max_length=16,
+            max_length=32,
         )
 
         answer = self.tokenizer.decode(outs[0], skip_special_tokens=True)

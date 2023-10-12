@@ -51,7 +51,7 @@ def answer():
 
     # nlp = pipeline("question-generation", use_auth_token='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')
     nlp = pipeline("question-generation", model="valhalla/t5-small-qg-prepend", qg_format="prepend", use_auth_token='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')
-    # nlp = pipeline("multitask-qa-qg", model="valhalla/distilt5-qa-qg-hl-6-4")
+    # nlp = pipeline("multitask-qa-qg")
     # qg_model = AutoModelForSeq2SeqLM.from_pretrained("ramsrigouthamg/t5_squad_v1", use_auth_token='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')
     # qg_tokenizer = AutoTokenizer.from_pretrained("ramsrigouthamg/t5_squad_v1", use_auth_token='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')
     # qa_model = pipeline("question-answering", model="mrm8488/t5-small-finetuned-squad-qgen",
@@ -90,12 +90,24 @@ def answer():
         res = []
         [res.append(x) for x in answer if x not in res]
 
+
+
+    # API_URL = "https://api-inference.huggingface.co/models/valhalla/t5-small-qg-prepend"
+    # headers = {"Authorization": "Bearer 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"}
+    #
+    # def query(payload):
+    #     response = requests.post(API_URL, headers=headers, json=payload)
+    #     return response.json()
+    #
+    # output = query({
+    #     "inputs": "The answer to the universe is",
+    # })
     with open('answer.json', 'w') as outfile:
         json.dump(answer, outfile)
         # json.dumps(qa_pairs, indent=4)
     # return render_template('answer.html', passage=cleaned_passage, question=question, answer=answer)
     return render_template("answer.html", answer=res)
-
+    # return render_template("answer.html", answer=output)
 
 @app.route('/download')
 def download():
