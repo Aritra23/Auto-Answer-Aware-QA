@@ -5,18 +5,10 @@ from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from itertools import groupby
 
-# from email.mime.base import MIMEBase
-# from email.mime.text import MIMEText
-# from email.utils import COMMASPACE
-# from email import encoders
+
 from flask import Flask, render_template, request, send_file, url_for, redirect
 # from transformers import pipeline, AutoModelForTokenClassification, AutoTokenizer
 from pipelines import pipeline  # Replace with your own function for generating answers
-from question_generation import clean_text
-# from huggingface_hub import login
-# access_token = "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"
-# login(token = access_token)
-from transformers import AutoModel, AutoModelForSeq2SeqLM, AutoTokenizer
 
 access_token = "hf_..."
 
@@ -32,31 +24,10 @@ def index():
 @app.route("/answer", methods=["POST"])
 def answer():
     passage = request.form["passage"]
-    # cleaned_passage = clean_text(passage)
-    # question = request.form["question"]
-    # model = AutoModel.from_pretrained("valhalla/t5-small-qg-prepend", use_auth_token='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')
-    # nlp = pipeline('question-generation', model='valhalla/t5-small-qg-prepend', qg_format="prepend", use_auth_token='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')
-    # nlp = pipeline("question-answering", model = "distilbert-base-cased-distilled-squad", tokenizer = "bert-base-cased")
-    # model = AutoModelForSeq2SeqLM.from_pretrained("valhalla/t5-small-e2e-qg", use_auth_token='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')
-    # tokenizer = AutoTokenizer.from_pretrained("valhalla/t5-small-e2e-qg")
-    # nlp = pipeline("e2e-qg", use_auth_token='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')
-    # nlp = pipeline("multitask-qa-qg", use_auth_token='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')
 
-    # tokenizer = AutoTokenizer.from_pretrained("valhalla/t5-small-qa-qg-hl", use_auth_token='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')
-    #
-    # model = AutoModelForSeq2SeqLM.from_pretrained("valhalla/t5-small-qa-qg-hl", use_auth_token='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')
-    # tokenizer = AutoTokenizer.from_pretrained("valhalla/t5-small-qg-hl", use_auth_token='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')
 
-    # model = AutoModelForSeq2SeqLM.from_pretrained("valhalla/t5-small-qg-prepend", use_auth_token='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')
+    nlp = pipeline("question-generation", model="valhalla/t5-small-qg-prepend", qg_format="prepend")
 
-    # nlp = pipeline("question-generation", use_auth_token='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')
-    nlp = pipeline("question-generation", model="valhalla/t5-small-qg-prepend", qg_format="prepend", use_auth_token='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')
-    # nlp = pipeline("multitask-qa-qg")
-    # qg_model = AutoModelForSeq2SeqLM.from_pretrained("ramsrigouthamg/t5_squad_v1", use_auth_token='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')
-    # qg_tokenizer = AutoTokenizer.from_pretrained("ramsrigouthamg/t5_squad_v1", use_auth_token='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')
-    # qa_model = pipeline("question-answering", model="mrm8488/t5-small-finetuned-squad-qgen",
-    #                     tokenizer="t5-base", use_auth_token='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')
-    # print(passage)
     answer = nlp(passage)
 
     answer = [{'question': key, 'answer': max(item['answer'] for item in values)}
@@ -77,7 +48,7 @@ def answer():
             break
 
     if selected_task == "multi-qg":
-        nlp = pipeline("e2e-qg", use_auth_token='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')
+        nlp = pipeline("e2e-qg")
         answer = nlp(passage)
         res = []
         [res.append(x) for x in answer if x not in res]
@@ -91,17 +62,6 @@ def answer():
         [res.append(x) for x in answer if x not in res]
 
 
-
-    # API_URL = "https://api-inference.huggingface.co/models/valhalla/t5-small-qg-prepend"
-    # headers = {"Authorization": "Bearer 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"}
-    #
-    # def query(payload):
-    #     response = requests.post(API_URL, headers=headers, json=payload)
-    #     return response.json()
-    #
-    # output = query({
-    #     "inputs": "The answer to the universe is",
-    # })
     with open('answer.json', 'w') as outfile:
         json.dump(answer, outfile)
         # json.dumps(qa_pairs, indent=4)
@@ -147,8 +107,7 @@ def email_answer():
         smtp.ehlo()
         smtp.starttls()
         smtp.ehlo()
-
-        smtp.login('lahiri.aritra@gmail.com', 'vvhktmjpoxmmrdsy')
+        smtp.login('lahiri.aritra@gmail.com', 'XXXXXXXX')
         smtp.send_message(msg)
 
     # Delete the JSON file after sending the email
